@@ -29,16 +29,16 @@ const Finder = () => {
       {state && (
         <>
           <div className="bg-red-300 max-w-max mt-10"> {state?.error}</div>
-          <div className=" w-full mt-10 flex flex-row gap-10">
-            <div className="flex">
+          <div className=" w-full mt-10 flex flex-row gap-10 min-h-80">
+            <div className="flex flex-1 relative">
               <Image
                 src={state.imageUrl}
                 alt="ikea picture"
-                width={200}
-                height={200}
+                fill
+                className="object-cover"
               />
             </div>
-            <div className="flex flex-col gap-5">
+            <div className="flex flex-col gap-5 flex-1">
               <h1>Name from SK web: {state.name}</h1>
               <h2>Description from SK web: {state.nameDesc}</h2>
               <h1>
