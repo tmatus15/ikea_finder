@@ -32,22 +32,22 @@ const Finder = () => {
           <div className=" w-full mt-10 flex flex-row gap-10">
             <div className="flex">
               <Image
-                src={state?.imageUrl}
+                src={state.imageUrl}
                 alt="ikea picture"
                 width={200}
                 height={200}
               />
             </div>
             <div className="flex flex-col gap-5">
-              <h1>Name from SK web: {state?.name}</h1>
-              <h2>Description from SK web: {state?.nameDesc}</h2>
+              <h1>Name from SK web: {state.name}</h1>
+              <h2>Description from SK web: {state.nameDesc}</h2>
               <h1>
-                Price in SK: {state?.price} {state?.priceCur}
+                Price in SK: {state.price} {state.priceCur}
               </h1>
             </div>
           </div>
           <div className="flex mt-10">
-            <Comparator item={state?.product} />
+            <Comparator item={state.product} />
           </div>
         </>
       )}
