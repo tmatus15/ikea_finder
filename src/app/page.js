@@ -1,6 +1,4 @@
-import Comparator from "@/components/shared/Comparator";
 import Finder from "@/components/shared/Finder";
-import Image from "next/image";
 
 export default function Home() {
   return (

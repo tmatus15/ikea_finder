@@ -35,7 +35,7 @@ const Finder = () => {
                 src={state.imageUrl}
                 alt="ikea picture"
                 fill
-                className="object-cover"
+                className="object-contain"
               />
             </div>
             <div className="flex flex-col gap-5 flex-1">

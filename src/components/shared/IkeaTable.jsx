@@ -1,4 +1,4 @@
-import React from "react";
+import Link from "next/link";
 
 import {
   Table,
@@ -17,7 +17,7 @@ const IkeaTable = ({ items }) => {
         <TableCaption>Price comparision from every ikea store</TableCaption>
         <TableCaption>Exchange rates are daily updated</TableCaption>
         <TableHeader>
-          <TableRow>
+          <TableRow className="p-bold-20">
             <TableHead>Country</TableHead>
             <TableHead>Local Price</TableHead>
             <TableHead>Currency</TableHead>
@@ -26,15 +26,26 @@ const IkeaTable = ({ items }) => {
             <TableHead>URL</TableHead>
           </TableRow>
         </TableHeader>
+
         <TableBody>
           {items.map((ikea) => (
-            <TableRow key={ikea.country}>
+            <TableRow
+              key={ikea.country}
+              className={
+                ikea.eurPrice === "Not Available"
+                  ? "bg-red-100/50"
+                  : "bg-green-100/50"
+              }>
               <TableCell>{ikea.country}</TableCell>
               <TableCell>{ikea.finalPrice}</TableCell>
               <TableCell>{ikea.currency}</TableCell>
               <TableCell>{ikea.inverseRate}</TableCell>
               <TableCell>{ikea.eurPrice}</TableCell>
-              <TableCell>{ikea.url}</TableCell>
+              <TableCell>
+                <Link href={ikea.url} rel="noopener noreferrer" target="_blank">
+                  {ikea.url}
+                </Link>
+              </TableCell>
             </TableRow>
           ))}
         </TableBody>

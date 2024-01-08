@@ -113,8 +113,8 @@ export const comaparePrice = async (prevState, formData) => {
 
     // get exchange rate against EURO
     let rate = 1;
-    let eurPrice = Math.ceil(finalPrice * 100) / 100;
-    if (ikeaShops[i].currency !== "EUR" && price !== 0) {
+    let eurPrice = Math.ceil(parseFloat(finalPrice) * 100) / 100;
+    if (ikeaShops[i].currency !== "EUR" && finalPrice !== 0) {
       const value = ikeaShops[i].currency.toLowerCase();
       rate = rates[value].inverseRate;
       eurPrice = parseFloat(rate) * parseFloat(finalPrice);
@@ -126,14 +126,17 @@ export const comaparePrice = async (prevState, formData) => {
     // make JSON object
     resultArray.push({
       country: ikeaShops[i].country,
-      url: ikeaShops[i].url + product,
-      finalPrice: Math.ceil(parseFloat(finalPrice) * 100) / 100,
+      url: eurPrice === 0 ? "Not Available" : ikeaShops[i].url + product,
+      finalPrice:
+        eurPrice === 0
+          ? "Not Available"
+          : Math.ceil(parseFloat(finalPrice) * 100) / 100,
       currency: ikeaShops[i].currency,
       inverseRate: Math.ceil(rate * 1000) / 1000,
-      eurPrice: eurPrice,
+      eurPrice: eurPrice === 0 ? "Not Available" : eurPrice,
     });
 
-    // console.log(resultArray);
+    console.log(resultArray);
   }
   return resultArray;
 };
